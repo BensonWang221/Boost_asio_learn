@@ -26,7 +26,7 @@ int main()
 		boost::asio::deadline_timer t(io, boost::posix_time::seconds(1));
 
 		// 注册处理函数，在事件满足时自动调用，参数为以const boost::system::error_code&
-		// 为唯一参数的函数对象，切记
+		// 为唯一参数的函数对象，且此参数由操作系统在调用时自动传入，切记
 		t.async_wait([&t, &count](const boost::system::error_code& code)
 						{
 							Print(code, t, count);
